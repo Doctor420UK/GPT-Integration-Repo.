@@ -1,0 +1,20 @@
+import openai
+import os
+
+# Ensure you have set your OpenAI API key in the environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY", "your-api-key")
+
+# Function to test GPT-4
+def test_gpt():
+    try:
+        response = openai.Completion.create(
+            engine="gpt-4",  # Correct engine for GPT-4
+            prompt="Hello, GPT-4! How are you?",
+            max_tokens=50
+        )
+        print(response.choices[0].text.strip())
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    test_gpt()
